@@ -43,7 +43,7 @@ public class StavkaPorudzbineRestController {
 	@GetMapping(value = "stavkeZaPorudzbinu/{id}")
 	public Collection<StavkaPorudzbine> stavkaPoPorudzbiniId(@PathVariable("id") int id){
 		Porudzbina p = porudzbinaRepository.getOne(id);
-		return stavkaPorudzbineRepository.findByPorudzbinaBean(p);
+		return stavkaPorudzbineRepository.findByPorudzbina(p);
 	}
 	
 	@GetMapping(value = "stavkaPorudzbineCena/{cena}")
@@ -62,7 +62,7 @@ public class StavkaPorudzbineRestController {
 	//insert
 	@PostMapping(value = "stavkaPorudzbine")
 	public ResponseEntity<Void> insertStavkaPorudzbine(@RequestBody StavkaPorudzbine stavkaPorudzbine){
-		stavkaPorudzbine.setRedniBroj(stavkaPorudzbineRepository.nextRBr(stavkaPorudzbine.getPorudzbinaBean().getId()));
+		stavkaPorudzbine.setRedniBroj(stavkaPorudzbineRepository.nextRBr(stavkaPorudzbine.getPorudzbina().getId()));
 		stavkaPorudzbineRepository.save(stavkaPorudzbine);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
@@ -72,7 +72,7 @@ public class StavkaPorudzbineRestController {
 	public ResponseEntity<Void> updateStavkaPorudzbine(@RequestBody StavkaPorudzbine stavkaPorudzbine){
 		if(!stavkaPorudzbineRepository.existsById(stavkaPorudzbine.getId()))
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-		stavkaPorudzbine.setRedniBroj(stavkaPorudzbineRepository.nextRBr(stavkaPorudzbine.getPorudzbinaBean().getId()-1));
+		stavkaPorudzbine.setRedniBroj(stavkaPorudzbineRepository.nextRBr(stavkaPorudzbine.getPorudzbina().getId()-1));
 		stavkaPorudzbineRepository.save(stavkaPorudzbine);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

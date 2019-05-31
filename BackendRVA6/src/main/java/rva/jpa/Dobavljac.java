@@ -30,7 +30,7 @@ public class Dobavljac implements Serializable {
 
 	//bi-directional many-to-one association to Porudzbina
 	@JsonIgnore
-	@OneToMany(mappedBy="dobavljacBean")
+	@OneToMany(mappedBy="dobavljac")
 	private List<Porudzbina> porudzbinas;
 
 	public Dobavljac() {
@@ -78,14 +78,14 @@ public class Dobavljac implements Serializable {
 
 	public Porudzbina addPorudzbina(Porudzbina porudzbina) {
 		getPorudzbinas().add(porudzbina);
-		porudzbina.setDobavljacBean(this);
+		porudzbina.setDobavljac(this);
 
 		return porudzbina;
 	}
 
 	public Porudzbina removePorudzbina(Porudzbina porudzbina) {
 		getPorudzbinas().remove(porudzbina);
-		porudzbina.setDobavljacBean(null);
+		porudzbina.setDobavljac(null);
 
 		return porudzbina;
 	}

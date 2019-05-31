@@ -37,11 +37,11 @@ public class Porudzbina implements Serializable {
 	//bi-directional many-to-one association to Dobavljac
 	@ManyToOne
 	@JoinColumn(name="dobavljac")
-	private Dobavljac dobavljacBean;
+	private Dobavljac dobavljac;
 
 	//bi-directional many-to-one association to StavkaPorudzbine
 	@JsonIgnore
-	@OneToMany(mappedBy="porudzbinaBean")
+	@OneToMany(mappedBy="porudzbina")
 	private List<StavkaPorudzbine> stavkaPorudzbines;
 
 	public Porudzbina() {
@@ -87,12 +87,12 @@ public class Porudzbina implements Serializable {
 		this.placeno = placeno;
 	}
 
-	public Dobavljac getDobavljacBean() {
-		return this.dobavljacBean;
+	public Dobavljac getDobavljac() {
+		return this.dobavljac;
 	}
 
-	public void setDobavljacBean(Dobavljac dobavljacBean) {
-		this.dobavljacBean = dobavljacBean;
+	public void setDobavljac(Dobavljac dobavljac) {
+		this.dobavljac = dobavljac;
 	}
 
 	public List<StavkaPorudzbine> getStavkaPorudzbines() {
@@ -105,14 +105,14 @@ public class Porudzbina implements Serializable {
 
 	public StavkaPorudzbine addStavkaPorudzbine(StavkaPorudzbine stavkaPorudzbine) {
 		getStavkaPorudzbines().add(stavkaPorudzbine);
-		stavkaPorudzbine.setPorudzbinaBean(this);
+		stavkaPorudzbine.setPorudzbina(this);
 
 		return stavkaPorudzbine;
 	}
 
 	public StavkaPorudzbine removeStavkaPorudzbine(StavkaPorudzbine stavkaPorudzbine) {
 		getStavkaPorudzbines().remove(stavkaPorudzbine);
-		stavkaPorudzbine.setPorudzbinaBean(null);
+		stavkaPorudzbine.setPorudzbina(null);
 
 		return stavkaPorudzbine;
 	}

@@ -33,12 +33,12 @@ public class StavkaPorudzbine implements Serializable {
 	//bi-directional many-to-one association to Artikl
 	@ManyToOne
 	@JoinColumn(name="artikl")
-	private Artikl artiklBean;
+	private Artikl artikl;
 
 	//bi-directional many-to-one association to Porudzbina
 	@ManyToOne
 	@JoinColumn(name="porudzbina")
-	private Porudzbina porudzbinaBean;
+	private Porudzbina porudzbina;
 
 	public StavkaPorudzbine() {
 	}
@@ -83,20 +83,20 @@ public class StavkaPorudzbine implements Serializable {
 		this.redniBroj = redniBroj;
 	}
 
-	public Artikl getArtiklBean() {
-		return this.artiklBean;
+	public Artikl getArtikl() {
+		return this.artikl;
 	}
 
-	public void setArtiklBean(Artikl artiklBean) {
-		this.artiklBean = artiklBean;
+	public void setArtikl(Artikl artikl) {
+		this.artikl = artikl;
 	}
 
-	public Porudzbina getPorudzbinaBean() {
-		return this.porudzbinaBean;
+	public Porudzbina getPorudzbina() {
+		return this.porudzbina;
 	}
 
-	public void setPorudzbinaBean(Porudzbina porudzbinaBean) {
-		this.porudzbinaBean = porudzbinaBean;
+	public void setPorudzbina(Porudzbina porudzbina) {
+		this.porudzbina = porudzbina;
 	}
 
 }
